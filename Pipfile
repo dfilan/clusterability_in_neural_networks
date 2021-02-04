@@ -1,0 +1,46 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+awscli = "<2.0"
+numpy = "==1.19.1" # "*"
+jupyter = "==1.0.0" #"*"
+ipdb = "*"
+tensorflow-datasets = "==3.2.1" # "*"
+sacred = "==0.7.5" # "*"
+pymongo = "*"
+scipy = "==1.4.1"
+scikit-learn = "==0.20.2"
+pyamg = "==4.0.0" # "*"
+networkx = "*"
+matplotlib = "==3.3.0"
+pandas = "==0.24.2" # "*"
+scikit-image = "==0.15.0" # "*"
+pathos = "*"
+plac = "*"
+seaborn = "*"
+mlxtend = "==0.16.0" # "*"
+tqdm = "*"
+tensorflow = "==1.15"
+tensorflow-gpu = "==1.15"
+tensorboard = "*" # "*"
+tensorflow-model-optimization = "==0.1.1" # "*"
+pygraphviz = {sys_platform = "== 'linux'"}
+papermill = "*"
+openpyxl = "*"
+black = "==19.10b0"
+keras = "==2.3.1"
+image-classifiers = "==1.0.0"
+opencv-python = "==4.2.0.34"
+cloudpickle = "==1.4.1"
+lucid = {editable = true,git = "https://github.com/tensorflow/lucid.git",ref = "master"}
+threadpoolctl = "*"
+
+[requires]
+python_version = "3.7"
+
+[dev-packages]
+pytest = "*"
+memory-profiler = "*"
