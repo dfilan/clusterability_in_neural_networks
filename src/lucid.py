@@ -170,7 +170,7 @@ def render_vis_with_loss(model, objective_f, size, optimizer=None,
 
 def make_lucid_dataset(model_tag, lucid_net, all_labels, is_unpruned, transforms=[],
                        n_random=9, min_size=5, max_prop=0.8, display=True,
-                       savedir='/project/nn_clustering/datasets/', savetag=''):
+                       savedir='/project/clusterability_in_neural_networks/datasets/', savetag=''):
 
     if 'cnn' in model_tag.lower():
         cnn_params = CNN_VGG_MODEL_PARAMS if 'vgg' in str(model_tag).lower() else CNN_MODEL_PARAMS
@@ -260,7 +260,7 @@ def make_lucid_dataset(model_tag, lucid_net, all_labels, is_unpruned, transforms
         pickle.dump(results, f)
 
 
-def evaluate_visualizations(model_tag, rep, is_unpruned, data_dir='/project/nn_clustering/datasets/'):
+def evaluate_visualizations(model_tag, rep, is_unpruned, data_dir='/project/clusterability_in_neural_networks/datasets/'):
 
     if is_unpruned:
         suff = f'{rep}_unpruned_max_data.pkl'
@@ -385,7 +385,7 @@ RESNET50_LAYER_MAP = {'conv0': 'resnet_v1_50/conv1/Relu',
 NETWORK_LAYER_MAP = {'vgg16': VGG16_LAYER_MAP, 'vgg19': VGG19_LAYER_MAP, 'resnet50': RESNET50_LAYER_MAP}
 
 
-def get_clustering_info_imagenet(model_tag, num_clusters, savedir='/project/nn_clustering/results/'):
+def get_clustering_info_imagenet(model_tag, num_clusters, savedir='/project/clusterability_in_neural_networks/results/'):
 
     assert model_tag in VIS_NETS
 
@@ -411,8 +411,8 @@ def get_clustering_info_imagenet(model_tag, num_clusters, savedir='/project/nn_c
 
 def make_lucid_imagenet_dataset(model_tag, n_random=9,
                                 min_size=3, max_prop=0.8, display=True,
-                                infodir='/project/nn_clustering/results/',
-                                savedir='/project/nn_clustering/datasets/'):
+                                infodir='/project/clusterability_in_neural_networks/results/',
+                                savedir='/project/clusterability_in_neural_networks/datasets/'):
 
     assert model_tag in VIS_NETS
 
@@ -526,7 +526,7 @@ def make_lucid_imagenet_dataset(model_tag, n_random=9,
         pickle.dump(results, f)
 
 
-def evaluate_imagenet_visualizations(model_tag, data_dir='/project/nn_clustering/datasets/'):
+def evaluate_imagenet_visualizations(model_tag, data_dir='/project/clusterability_in_neural_networks/datasets/'):
 
     assert model_tag in VIS_NETS
 

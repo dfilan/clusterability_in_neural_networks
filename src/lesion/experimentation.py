@@ -657,7 +657,7 @@ def lesion_test_imagenet(model, dataset, y, labels_in_layers,
 
 def perform_lesion_experiment_imagenet(network, num_clusters=10, num_shuffles=10, with_random=True,
                                        downsampled=False, eigen_solver='arpack', batch_size=32,
-                                       data_dir='/project/nn_clustering/datasets/imagenet2012',
+                                       data_dir='/project/clusterability_in_neural_networks/datasets/imagenet2012',
                                        val_tar='ILSVRC2012_img_val.tar',
                                        downsampled_n_samples=10000):
 

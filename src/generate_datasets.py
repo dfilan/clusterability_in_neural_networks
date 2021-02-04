@@ -262,7 +262,7 @@ def polynomial_regression_dataset(n_train, n_test, n_inputs=2, coefs=(0, 1), exp
     return (X_train_poly, y_train_poly), (X_test_poly, y_test_poly)
 
 
-def prep_imagenet_validation_data(data_dir='/project/nn_clustering/datasets/imagenet2012',
+def prep_imagenet_validation_data(data_dir='/project/clusterability_in_neural_networks/datasets/imagenet2012',
                                   val_tar='ILSVRC2012_img_val.tar'):
 
     # prior to running this, execute:
