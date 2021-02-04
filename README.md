@@ -37,7 +37,7 @@ There are two options to set up the environment:
 
 2. Install `graphviz`
    1. Ubuntu/Debian: `apt intall graphviz`
-   2. MacOS: `brew install graphviz`
+n   2. MacOS: `brew install graphviz`
 
 3. Install with `pipenv install --dev`
 
@@ -119,6 +119,8 @@ ssh -N -L localhost:8888:localhost:<PORT NUMBER> -i <PATH TO SSH PUBLIC KEY>  <U
 ```
 
 After doing this, you can then open the jupyter notebook in your browser.
+
+These notebooks were created back when the code lived in a directory called `nn_clustering`. Now that it lives in a differently-named directory, you might have to find-and-replace.
 
 #### `tmux`
 
