@@ -1,4 +1,4 @@
-# Neural Networks are Surprisingly Modular
+# Clusterability in Neural Networks
 
 ## Results
 
