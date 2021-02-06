@@ -14,34 +14,13 @@ echo "Generate personal access token at https://github.com/settings/tokens"
 echo "In the website, select repo for the scope."
 echo "Paste your personal access token, followed by [ENTER]:"
 read token
-git config --global url."https://$token:@github.com/".insteadOf "https://github.com/"
-
-echo "Type your GitHub username, followed by [ENTER]":
-read github_username
-git config --global user.name "$github_username"
-
-echo "Type your GitHub email, followed by [ENTER]":
-read github_email
-git config --global user.email "$github_email"
-
-echo "Paste your AWS access key (for your IAM user on Daniel's account), followed by [ENTER]"
-read aws_access
-
-echo "Paste your AWS secret key (for your IAM user on Daniel's account), followed by [ENTER]"
-read aws_secret
-
-mkdir ~/.aws
-
-printf "[default]\nregion = us-west-1" > ~/.aws/config
-
-printf "[default]\naws_access_key_id = %s\naws_secret_access_key = %s" $aws_access $aws_secret > ~/.aws/credentials
 
 echo "Cloning repo..."
-git clone https://github.com/HumanCompatibleAI/nn_clustering.git
+git clone https://github.com/dfilan/clusterability_in_neural_networks.git
 
-cd nn_clustering
+cd clusterability_in_neural_networks
 
-git checkout master
+git checkout main
 
 echo "Installing Python dependencies..."
 # PIP_USER=yes  # install as --user
