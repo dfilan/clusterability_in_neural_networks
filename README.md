@@ -56,8 +56,6 @@ Useful: [Lifecycle of Docker Container](https://medium.com/@nagarwal/lifecycle-o
 
 Clone the repository and change to the `devops` directory.
 
-It was already done this step for `perception` and `svm`.
-
 ```bash
 docker build -t humancompatibleai/nn-clustering .
 ```
