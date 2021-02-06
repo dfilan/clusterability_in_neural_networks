@@ -1,4 +1,5 @@
 FROM tensorflow/tensorflow:1.15.2-gpu-py3-jupyter
+ARG DOWNLOAD_ALL=0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
@@ -26,3 +27,20 @@ WORKDIR /project
 # USER nncuser
 # COPY build.sh .
 # RUN chown nncuser build.sh
+
+RUN git clone https://github.com/dfilan/clusterability_in_neural_networks.git \
+    && cd clusterability_in_neural_networks && git checkout main
+
+RUN echo "Installing python dependencies..." && pipenv install --system
+RUN echo "Patching scipy and sklearn..." && python -m site | grep /usr/local/lib/python3.7/dist-packages || { echo "Cannot find dist-packages directory for patching of scipy and sklearn"; exit 1; }
+RUN cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
+
+RUN echo "Downloading results folder..." && aws s3 cp --recursive s3://nn-clustering/results results
+RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \ 
+including checkpoints. Hold tight, this might take a while..." \
+&& aws s3 cp --recursive s3://nn-clustering/models models; \
+else echo "Downloading models folder, excluding checkpoints..." \
+&& aws s3 cp --recursive --exclude "*.ckpt" s3://nn-clustering/models models; fi
+RUN echo "Downloading datasets folder..." && aws s3 cp --recursive s3://nn-clustering/datasets datasets
+
+RUN cd ..
