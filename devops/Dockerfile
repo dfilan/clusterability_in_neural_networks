@@ -32,8 +32,11 @@ RUN git clone https://github.com/dfilan/clusterability_in_neural_networks.git \
     && cd clusterability_in_neural_networks && git checkout main
 
 RUN echo "Installing python dependencies..." && pipenv install --system
-RUN echo "Patching scipy and sklearn..." && python -m site | grep /usr/local/lib/python3.7/dist-packages || { echo "Cannot find dist-packages directory for patching of scipy and sklearn"; exit 1; }
-RUN cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
+RUN echo "Patching scipy and sklearn..." \
+    && python -m site | grep /usr/local/lib/python3.7/dist-packages \
+    || { echo "Cannot find dist-packages directory for patching of scipy and \
+    sklearn"; exit 1; } \
+    cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
 
 RUN echo "Downloading results folder..." \
     && aws s3 cp --recursive s3://nn-clustering/results results
