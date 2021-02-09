@@ -10,11 +10,6 @@ done
 echo "Finalizing Build!"
 echo "#################"
 
-echo "Generate personal access token at https://github.com/settings/tokens"
-echo "In the website, select repo for the scope."
-echo "Paste your personal access token, followed by [ENTER]:"
-read token
-
 echo "Cloning repo..."
 git clone https://github.com/dfilan/clusterability_in_neural_networks.git
 
