@@ -38,14 +38,19 @@ RUN echo "Patching scipy and sklearn..." \
     sklearn"; exit 1; } \
     cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
 
-RUN echo "Downloading results folder..." \
-    && aws s3 cp --recursive s3://nn-clustering/results results
+# TODO get rid of this or upload results
+# RUN echo "Downloading results folder..." \
+#     && aws s3 cp --recursive \
+#     s3://clusterability-in-neural-networks/public/results results
 RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \ 
     including checkpoints. Hold tight, this might take a while..." \
-    && aws s3 cp --recursive s3://nn-clustering/models models; \
+    && aws s3 cp --recursive \
+    s3://clusterability-in-neural-networks/public/models models; \
     else echo "Downloading models folder, excluding checkpoints..." \
-    && aws s3 cp --recursive --exclude "*.ckpt" s3://nn-clustering/models models; fi
+    && aws s3 cp --recursive --exclude "*.ckpt" \
+    s3://clusterability-in-neural-networks/public/models models; fi
 RUN echo "Downloading datasets folder..." \
-    && aws s3 cp --recursive s3://nn-clustering/datasets datasets
+    && aws s3 cp --recursive \
+    s3://clusterability-in-neural-networks/public/datasets datasets
 
 RUN cd ..
