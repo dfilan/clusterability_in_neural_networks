@@ -39,10 +39,12 @@ RUN echo "Patching scipy and sklearn..." \
     cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
 
 RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \
-    including checkpoints. Hold tight, this might take a while..." \
+    including checkpoints. Note that this may not include all models used \
+    in the paper. Hold tight, this might take a while..." \
     && aws s3 cp --recursive \
     s3://clusterability-in-neural-networks/public/models models; \
-    else echo "Downloading models folder, excluding checkpoints..." \
+    else echo "Downloading models folder, excluding checkpoints. Note that \
+    this might not include all models used in the paper..." \
     && aws s3 cp --recursive --exclude "*.ckpt" \
     s3://clusterability-in-neural-networks/public/models models; fi
 RUN echo "Downloading datasets folder..." \
