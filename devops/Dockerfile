@@ -38,11 +38,7 @@ RUN echo "Patching scipy and sklearn..." \
     sklearn"; exit 1; } \
     cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
 
-# TODO get rid of this or upload results
-# RUN echo "Downloading results folder..." \
-#     && aws s3 cp --recursive \
-#     s3://clusterability-in-neural-networks/public/results results
-RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \ 
+RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \
     including checkpoints. Hold tight, this might take a while..." \
     && aws s3 cp --recursive \
     s3://clusterability-in-neural-networks/public/models models; \
