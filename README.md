@@ -57,7 +57,7 @@ Useful: [Lifecycle of Docker Container](https://medium.com/@nagarwal/lifecycle-o
 Clone the repository and change to the `devops` directory.
 
 ```bash
-docker build -t humancompatibleai/nn-clustering .
+docker build -t humancompatibleai/clusterability_in_neural_networks .
 ```
 
 #### Creating a container (done **ONCE** by one user per one machine)
