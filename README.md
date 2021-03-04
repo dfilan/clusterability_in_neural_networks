@@ -62,10 +62,8 @@ docker build -t humancompatibleai/clusterability_in_neural_networks .
 
 #### Creating a container (done **ONCE** by one user per one machine)
 
-In other words, if you run this commands on, for example, `svm` - you don't need to do so again. You're supposed then to have a *container* there already.
-
-First, you need a port number to your Jupyter Netbook - pick up a random number (with your favoriate generator) in the range 8000-8500.
-We pick up a random number so you don't collide with existing notebooks on that machine.
+First, you need a port number to your Jupyter notebook - pick up a random number (with your favoriate generator) in the range 8000-8500.
+We pick a random number so you don't collide with existing notebooks on that machine.
 
 First run: 
 
@@ -77,9 +75,9 @@ docker run \
 -it \
 -p <PORT NUMBER>:8888 \
 --rm \
---name nn_clustering-$(whoami) \
+--name clusterability_in_neural_networks-$(whoami) \
 --runtime=nvidia \  # REMOVE, if you don't have GPU
-humancompatibleai/nn-clustering:latest \
+humancompatibleai/clusterability_in_neural_networks:latest \
 bash
 ```
 
@@ -95,7 +93,7 @@ NB: to leave the container, use ctrl-P ctrl-Q. Typing `exit` will destroy the co
 
 ```bash
 docker exec \
--it nn_clustering-$(whoami) \
+-it clusterability_in_neural_networks-$(whoami) \
 bash
 ```
 
@@ -122,12 +120,3 @@ These notebooks were created back when the code lived in a directory called `nn_
 #### `tmux`
 
 It is advised to learn how to use tmux, and run the Jupyter Notebook on a separate window: https://github.com/tmux/tmux/wiki
-
-
-### 3. AWS S3
-
-To upload files or directories:
-
-```bash
-aws s3 cp --recursive <local> s3://nn-clustering/<remote>
-```
