@@ -81,12 +81,6 @@ humancompatibleai/clusterability_in_neural_networks:latest \
 bash
 ```
 
-And then type
-
-```bash
-bash build.sh
-```
-
 NB: to leave the container, use ctrl-P ctrl-Q. Typing `exit` will destroy the container.
 
 #### Running the container
