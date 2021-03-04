@@ -28,27 +28,27 @@ WORKDIR /project
 # COPY build.sh .
 # RUN chown nncuser build.sh
 
-RUN git clone https://github.com/dfilan/clusterability_in_neural_networks.git \
-    && cd clusterability_in_neural_networks && git checkout main
+RUN git clone https://github.com/dfilan/clusterability_in_neural_networks.git
+WORKDIR clusterability_in_neural_networks
+RUN git checkout main
 
 RUN echo "Installing python dependencies..." && pipenv install --system
 RUN echo "Patching scipy and sklearn..." \
     && python -m site | grep /usr/local/lib/python3.7/dist-packages \
     || { echo "Cannot find dist-packages directory for patching of scipy and \
-    sklearn"; exit 1; } \
-    cp -r devops/patches/* /usr/local/lib/python3.7/dist-packages
+    sklearn"; exit 1; }
+COPY patches/* /usr/local/lib/python3.7/dist-packages/
 
 RUN if [ "$DOWNLOAD_ALL" -gt 0 ]; then echo "Downloading models folder, \
     including checkpoints. Note that this may not include all models used \
     in the paper. Hold tight, this might take a while..." \
-    && aws s3 cp --recursive \
+    && aws s3 cp --no-sign-request --region=us-west-1 --recursive \
     s3://clusterability-in-neural-networks/public/models models; \
     else echo "Downloading models folder, excluding checkpoints. Note that \
     this might not include all models used in the paper..." \
-    && aws s3 cp --recursive --exclude "*.ckpt" \
+    && aws s3 cp --no-sign-request --region=us-west-1 --recursive \
+    --exclude "*.ckpt" \
     s3://clusterability-in-neural-networks/public/models models; fi
 RUN echo "Downloading datasets folder..." \
-    && aws s3 cp --recursive \
+    && aws s3 cp --no-sign-request --region=us-west-1 --recursive \
     s3://clusterability-in-neural-networks/public/datasets datasets
-
-RUN cd ..
