@@ -1,5 +1,7 @@
 # Clusterability in Neural Networks
 
+Code for the arXiv submission "Clusterability in Neural Networks". Also contains other stuff we did. Code by Daniel Filan, Stephen Casper, Shlomi Hod, and Cody Wild.
+
 ## Results
 
 1. [Clustering and p-value plots](notebooks/mlp-plots.ipynb)
@@ -9,7 +11,7 @@
 
 ## Instructions
 
-We use `make` with a `Makefile` to automate the project.
+We use `make` with a `Makefile` to automate the project. A non-exhaustive list of commands:
 
 1. `make datasets` - Build all datasets (deterministic),
 2. `make models` - Train all NN models, both MLP and CNN.
@@ -19,7 +21,7 @@ We use `make` with a `Makefile` to automate the project.
 6. `make mlp-double-lesion` - Run the notebook `notebooks/mlp-double-lesion-test.ipynb` that perform the double lesion test on all standard MLP models.
 7. `make mlp-learning-curve` - Run the notebook `notebooks/mlp-learning-curve.ipynb` that plot the learning curves to selected set of MLP models.
 8. `make mlp-clustering-stability` - Run the notebook `notebooks/mlp-clustering-stability.ipynb` that train and cluster multiple trained instanced of all of the MLP models (including alternative explanation ones), and save the results as a table into `results/mlp-clustering-stability-statistic.csv` (NOTE: read the comment in the notebook about `src/train_nn.py` before running it).
-9. `make mlp-plots` - Run the notebook `nootebooks/mlp-plots.ipynb` that generates many of the plots from the NeurIPS 2020 paper.
+9. `make mlp-plots` - Run the notebook `nootebooks/mlp-plots.ipynb` that generates many of the plots from the submission.
 10. `make mlp-clustering-stability-n-clusters` - Run the notebook `notebooks/mlp-clustering-stability-different-n_clusters.ipynb` tha cluster multiple trained instanced of all of the MLP models (including alternative explanation ones) with various number of clusters (K=2, 7, 10), and save the results as a table into `results/mlp-clustering-stability-statistic-K.csv` (NOTE: read the comment in the notebook about `src/train_nn.py` before running it).
 
 ## Research Environment Setup
@@ -46,7 +48,7 @@ n   2. MacOS: `brew install graphviz`
    
 5. To enter the virtual environment, type `pipenv shell`
 
-6. To set up the dependencies and finish, type `cd nn_clustering` and `pipenv install --system`
+6. To set up the dependencies and finish, type `cd clusterability_in_neural_networks` and `pipenv install --system`
 
 ### 2. Docker
 
