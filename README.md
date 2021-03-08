@@ -62,6 +62,12 @@ Clone the repository and change to the `devops` directory.
 docker build -t humancompatibleai/clusterability_in_neural_networks .
 ```
 
+If you want to download all the training checkpoints of models we trained, instead run
+
+```bash
+docker build --build-arg DOWNLOAD_ALL=1 -t humancompatibleai/clusterability_in_neural_networks .
+```
+
 #### Creating a container (done **ONCE** by one user per one machine)
 
 First, you need a port number to your Jupyter notebook - pick up a random number (with your favoriate generator) in the range 8000-8500.
