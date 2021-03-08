@@ -19,7 +19,6 @@ RUN rm -fr /usr/bin/python3 && ln /usr/bin/python3.7 /usr/bin/python3
 RUN pip3 install pipenv
 
 RUN mkdir /project
-COPY build.sh /project/build.sh
 WORKDIR /project
 
 # RUN adduser --disabled-password --gecos '' nncuser
