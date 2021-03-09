@@ -122,3 +122,7 @@ These notebooks were created back when the code lived in a directory called `nn_
 #### `tmux`
 
 It is advised to learn how to use tmux, and run the Jupyter Notebook on a separate window: https://github.com/tmux/tmux/wiki
+
+## Running source code
+
+Once you've entered the virtual environment, in order to run code, you use commands like `python -m src.train_nn`. This runs the file as-is. If you open the source files, you'll see that there are configs at the top. Near the start of the file, you'll notice that there are a bunch of 'config functions' setting values of various config variables. To pick an existing config, e.g. `cnn_vgg_config`, you run `python -m src.train_nn with cnn_vgg_config`, and to set values of variables, you can run something like `python -m src.train_nn with cnn_vgg_config dataset_name='cifar10' epochs=30`.
