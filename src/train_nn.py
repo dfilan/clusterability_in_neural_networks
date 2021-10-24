@@ -546,7 +546,7 @@ def create_cnn_layers(dataset_name, width, height, num_classes, model_params, ac
         if conv_params['batch_norm_after']:
             conv_layers.append(tf.keras.layers.BatchNormalization())
         if with_dropout:
-            if 'dropout_after' in colv_params.keys():
+            if 'dropout_after' in conv_params.keys():
                 if conv_params['dropout_after']:
                     conv_layers.append(tf.keras.layers.Dropout(conv_params['dropout_rate']))
             else:
