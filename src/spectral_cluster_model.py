@@ -1374,7 +1374,7 @@ def expand_concat_step(conv_weight_dict, concat_ins, new_i):
     return conv_weight_dict, concat_ins, new_i, done
 
 
-def get_conv_weight_connections(model_layers, norm):
+def get_conv_weight_connections(model_layers, scale, norm):
 
     # get indexess of conv2d layers in network
     conv_idxs = [model_layers.index(cl) for cl in model_layers
@@ -1386,7 +1386,7 @@ def get_conv_weight_connections(model_layers, norm):
 
     for conv_i in conv_idxs:  # get output weight dict for each conv layer
         layer = model_layers[conv_i]
-        weights = conv_tensor_to_adj(layer.get_weights()[0], norm=norm)
+        weights = conv_tensor_to_adj(layer.get_weights()[0], norm=norm, scale=scale)
         conv_weight_dict[conv_i] = search(model_layers, layer, weights, [])
 
     concat_ins = get_concat_in_dict(conv_weight_dict)  # for each layer, get list of concatted input layers
@@ -1510,7 +1510,7 @@ def run_clustering_imagenet(network, num_clusters=10, epsilon=1e-8, num_samples=
     model_layers = model.layers
 
     # note that conv_connections[0] gives info for the conv layer that maps from the image
-    conv_connections, layer_names = get_conv_weight_connections(model_layers, norm)
+    conv_connections, layer_names = get_conv_weight_connections(model_layers, False, norm)
     adj_mat = connections_to_graph_imagenet(conv_connections)
 
     del net, model, model_layers
